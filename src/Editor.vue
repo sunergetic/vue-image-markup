@@ -106,7 +106,7 @@
                     reader.readAsDataURL(xhr.response);
                 };
                 
-                xhr.open('GET', url+(new Date()).getTime());
+                xhr.open('GET', url);
                 xhr.responseType = 'blob';
                 xhr.send();
             },
