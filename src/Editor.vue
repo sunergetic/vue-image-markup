@@ -78,6 +78,8 @@
             setBackgroundImage(imageUrl, backgroundColor = "#fff") {
                 let img = new Image();
                 this.toDataUrl(imageUrl, (dataUri) => {
+                    console.log('Cross origin to anonymous')
+                    img.crossOrigin = 'anonymous'
                     img.src = dataUri;
                     let inst = this;
                     img.onload = function () {
