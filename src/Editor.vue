@@ -78,8 +78,6 @@
             setBackgroundImage(imageUrl, backgroundColor = "#fff") {
                 let img = new Image();
                 this.toDataUrl(imageUrl, (dataUri) => {
-                    console.log('Cross origin to anonymous')
-                    img.crossOrigin = 'anonymous'
                     img.src = dataUri;
                     let inst = this;
                     img.onload = function () {
@@ -107,7 +105,8 @@
                     };
                     reader.readAsDataURL(xhr.response);
                 };
-                xhr.open('GET', url);
+                
+                xhr.open('GET', url+(new Date()).getTime());
                 xhr.responseType = 'blob';
                 xhr.send();
             },
