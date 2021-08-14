@@ -31,7 +31,8 @@ export default (function () {
                     fontSize: textFontSize,
                     fontStyle: textFontStyle,
                     fontWeight: textFontWeight,
-                    id: textId
+                    id: textId,
+                    textBackgroundColor: '#FFFFFF'
                 });
                 canvas.renderAll();
             }
