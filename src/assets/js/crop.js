@@ -123,12 +123,12 @@ export default (function () {
             });
             rectRed.setControlsVisibility({
                 tl: true,
-                mt: false,
+                mt: true,
                 tr: true,
-                ml: false,
-                mr: false,
+                ml: true,
+                mr: true,
                 bl: true,
-                mb: false,
+                mb: true,
                 br: true
             }),
                 inst.canvas.add(rectRed);
