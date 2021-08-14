@@ -85,6 +85,7 @@ export default (function () {
                         fontWeight: textFontWeight,
                         hasBorders: false,
                         hasControls: false,
+                        backgroundColor: 'rgb(255,255,255)'
                         id: textId
                     });
 
