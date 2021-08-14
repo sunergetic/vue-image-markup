@@ -32,7 +32,7 @@ export default (function () {
                     fontStyle: textFontStyle,
                     fontWeight: textFontWeight,
                     id: textId,
-                    textBackgroundColor: '#FFFFFF'
+                    backgroundColor: '#FFFFFF'
                 });
                 canvas.renderAll();
             }
