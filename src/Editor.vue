@@ -680,8 +680,27 @@ export default {
 
       this.canvas.renderAll();
     },
-    changeCanvasSize(params) {
-      this.canvas.setDimensions(params);
+    rotateImage(angle) {
+      //   this.canvas.setDimensions(params);
+      var pi = Math.PI;
+      let radians = angle * (pi / 180);
+      this.canvas.backgroundImage.rotate(angle);
+      let newHeight =
+        Math.abs(inst.canvas.width * Math.sin(radians)) +
+        Math.abs(inst.canvas.height * Math.cos(radians));
+      let newWidth =
+        Math.abs(inst.canvas.width * Math.cos(radians)) +
+        Math.abs(inst.canvas.height * Math.sin(radians));
+      let canvasProperties = {
+        width: newWidth,
+        height: newHeight,
+      };
+      let currentCanvas = {
+        json: inst.canvas.toJSON(),
+        canvas: canvasProperties,
+      };
+      new CanvasHistory(inst.canvas, currentCanvas);
+      inst.canvas.renderAll();
     },
   },
 };
