@@ -701,11 +701,8 @@ export default {
         canvas: canvasProperties,
       };
       new CanvasHistory(inst.canvas, currentCanvas);
-      inst.canvas.setDimensions(canvasProperties);
       inst.canvas.renderAll();
-
-      let currentAngle = this.canvas.backgroundImage.getAngle();
-      console.log("Current angle -> ", currentAngle);
+      this.canvas.setDimensions(canvasProperties);
     },
   },
 };
