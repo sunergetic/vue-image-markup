@@ -686,7 +686,7 @@ export default {
       let radians = angle * (pi / 180);
       let inst = this;
       this.canvas.backgroundImage.rotate(angle);
-      this.canvas.backgroundImage.left = -20;
+      this.canvas.backgroundImage.left = 0;
       let newHeight =
         Math.abs(inst.canvas.width * Math.sin(radians)) +
         Math.abs(inst.canvas.height * Math.cos(radians));
