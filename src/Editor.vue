@@ -129,7 +129,7 @@ export default {
     },
     set(type, params) {
       switch (type) {
-        case "text":
+        case "text": {
           this.currentActiveTool = type;
           this.params = {
             fill: params && params.fill ? params.fill : this.color,
@@ -147,8 +147,9 @@ export default {
           };
           this.addText(this.params);
           break;
+        }
 
-        case "circle":
+        case "circle": {
           this.cancelCroppingImage();
           this.currentActiveTool = type;
           this.params = {
@@ -175,7 +176,8 @@ export default {
           };
           this.customCircle(type, this.params);
           break;
-        case "rect":
+        }
+        case "rect": {
           this.cancelCroppingImage();
           this.currentActiveTool = type;
           this.params = {
@@ -203,7 +205,8 @@ export default {
           };
           this.customRect(type, this.params);
           break;
-        case "comment":
+        }
+        case "comment": {
           this.cancelCroppingImage();
           this.currentActiveTool = type;
           this.params = {
@@ -231,7 +234,8 @@ export default {
           };
           this.customRect(type, this.params);
           break;
-        case "line":
+        }
+        case "line": {
           this.cancelCroppingImage();
           this.currentActiveTool = type;
           this.params = {
@@ -257,12 +261,14 @@ export default {
           };
           this.customRect(type, this.params);
           break;
-        case "selectMode":
+        }
+        case "selectMode": {
           this.currentActiveTool = type;
           this.drag();
           break;
+        }
 
-        case "arrow":
+        case "arrow": {
           this.currentActiveTool = type;
           this.params = {
             fill: params && params.fill ? params.fill : "transparent",
@@ -281,7 +287,8 @@ export default {
           };
           this.drawArrow(this.params);
           break;
-        case "freeDrawing":
+        }
+        case "freeDrawing": {
           this.currentActiveTool = type;
           this.params = {
             stroke: params && params.stroke ? params.stroke : this.color,
@@ -295,7 +302,8 @@ export default {
           };
           this.drawing(this.params);
           break;
-        case "crop":
+        }
+        case "crop": {
           this.currentActiveTool = type;
           this.params = {
             width: params && params.width ? params.width : 200,
@@ -335,7 +343,8 @@ export default {
           this.croppedImage = true;
           new CropImage(this.canvas, true, false, false, this.params);
           break;
-        case "eraser":
+        }
+        case "eraser": {
           this.canvas.off("mouse:down");
           this.currentActiveTool = type;
           let inst = this;
@@ -356,6 +365,7 @@ export default {
             }
           });
           break;
+        }
         default:
       }
     },
@@ -680,19 +690,41 @@ export default {
 
       this.canvas.renderAll();
     },
+    rotate() {
+      this.rotateImage(90);
+    },
     rotateImage(angle) {
-      //   this.canvas.setDimensions(params);
       var pi = Math.PI;
       let radians = angle * (pi / 180);
       let inst = this;
-      this.canvas.backgroundImage.rotate(angle);
-      this.canvas.backgroundImage.set("left", -15);
+
+      if (this.canvas.backgroundImage.angle === 270) {
+        this.canvas.backgroundImage.angle = 0;
+      } else {
+        this.canvas.backgroundImage.angle += angle;
+      }
+
       let newHeight =
         Math.abs(inst.canvas.width * Math.sin(radians)) +
         Math.abs(inst.canvas.height * Math.cos(radians));
       let newWidth =
         Math.abs(inst.canvas.width * Math.cos(radians)) +
         Math.abs(inst.canvas.height * Math.sin(radians));
+
+      if (this.canvas.backgroundImage.angle === 0) {
+        this.canvas.backgroundImage.top = 0;
+        this.canvas.backgroundImage.left = 0;
+      } else if (this.canvas.backgroundImage.angle === 180) {
+        this.canvas.backgroundImage.top = newHeight;
+        this.canvas.backgroundImage.left = newWidth;
+      } else if (this.canvas.backgroundImage.angle === 90) {
+        this.canvas.backgroundImage.top = 0;
+        this.canvas.backgroundImage.left = newWidth;
+      } else if (this.canvas.backgroundImage.angle === 270) {
+        this.canvas.backgroundImage.top = newHeight;
+        this.canvas.backgroundImage.left = 0;
+      }
+
       let canvasProperties = {
         width: newWidth,
         height: newHeight,
@@ -702,8 +734,8 @@ export default {
         canvas: canvasProperties,
       };
       new CanvasHistory(inst.canvas, currentCanvas);
+      inst.canvas.setDimensions(canvasProperties);
       inst.canvas.renderAll();
-      this.canvas.setDimensions(canvasProperties);
     },
   },
 };
