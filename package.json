@@ -5,7 +5,7 @@
   "main": "src/Editor.vue",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lionix-team/vue-image-markup.git"
+    "url": "git+https://github.com/sunergetic/vue-image-markup.git"
   },
   "keywords": [
     "image",
@@ -18,7 +18,7 @@
     "editor markup",
     "vuejs",
     "vue",
-    "lionix"
+    "sunergetic"
   ],
   "eslintConfig": {
     "root": true,
@@ -41,21 +41,11 @@
       "parser": "babel-eslint"
     }
   },
-  "authors": [
-    {
-      "name": "Lionix Team",
-      "email": "packages@lionix-team.com"
-    },
-    {
-      "name": "Lilit Simonyan",
-      "email": "lilit.simonyan.1998@gmail.com"
-    }
-  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lionix-team/vue-image-markup/issues"
+    "url": "https://https://github.com/sunergetic/vue-image-markup/issues"
   },
-  "homepage": "https://github.com/lionix-team/vue-image-markup#readme",
+  "homepage": "https://https://github.com/sunergetic/vue-image-markup#readme",
   "dependencies": {
     "fabric": "^5.3.0"
   }

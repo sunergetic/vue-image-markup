@@ -7,11 +7,7 @@
 
 ## Installation
 
-`npm i vue-image-markup`
-
-or
-
-`yarn add vue-image-markup`
+`npm i sunergetic/vue-image-markup`
 
 ## Usage
 
